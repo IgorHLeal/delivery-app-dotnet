@@ -1,4 +1,6 @@
 ﻿using DeliveryApp.Context;
+using DeliveryApp.Repositories;
+using DeliveryApp.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryApp;
@@ -16,6 +18,11 @@ public class Startup
     {
         // A instância AppDbContext foi utilizada como service pra que possa ser injetada em qualquer local do projeto
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+        // Configuração dos repositórios criados;Injeção de dependência
+        services.AddTransient<ILancheRepository, LancheRepository>();
+        services.AddTransient<ICategoryRepository, CategoriaRepository>();
+
         services.AddControllersWithViews();
     }
 

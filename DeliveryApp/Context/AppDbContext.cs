@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryApp.Context
 {
-    // A classe AppDbContext carrega informações deconfigurações do DbContext
+    // A classe AppDbContext carrega informações de configurações do DbContext
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
