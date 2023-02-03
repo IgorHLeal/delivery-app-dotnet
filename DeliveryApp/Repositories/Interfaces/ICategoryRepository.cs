@@ -1,9 +1,7 @@
 ﻿using DeliveryApp.Models;
 
-namespace DeliveryApp.Repositories.Interfaces
+namespace DeliveryApp.Repositories.Interfaces;
+public interface ICategoryRepository
 {
-    public interface ICategoryRepository
-    {
-        IEnumerable<Categoria> Categorias { get; }
-    }
+    IEnumerable<Categoria> Categorias { get; }
 }
