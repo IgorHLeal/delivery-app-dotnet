@@ -1,4 +1,5 @@
 ﻿using DeliveryApp.Repositories.Interfaces;
+using DeliveryApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryApp.Controllers
@@ -14,15 +15,20 @@ namespace DeliveryApp.Controllers
 
         public IActionResult List()
         {
-            ViewData["Titulo"] = "Todos os Lanches";
-            //ViewData["Data"] = DateTime.Now;
+            var lancheListViewModel = new LancheListViewModel();
+            lancheListViewModel.Lanches = _lacheRepository.Lanches;
+            lancheListViewModel.CategoiriaAtual = "Categoria Atual";
 
-            var lanches = _lacheRepository.Lanches;
-            //var totalLanches = lanches.Count();
+            return View(lancheListViewModel);
+            //ViewData["Titulo"] = "Todos os Lanches";
+            ////ViewData["Data"] = DateTime.Now;
 
-            //ViewBag.Total = "Total de lanches: ";
-            //ViewBag.TotalLanches = totalLanches;
-            return View(lanches);
+            //var lanches = _lacheRepository.Lanches;
+            ////var totalLanches = lanches.Count();
+
+            ////ViewBag.Total = "Total de lanches: ";
+            ////ViewBag.TotalLanches = totalLanches;
+            //return View(lanches);
         }
     }
 }
