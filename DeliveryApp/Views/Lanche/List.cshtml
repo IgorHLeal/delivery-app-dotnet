@@ -1,0 +1,26 @@
+﻿@*View fortemente tipada*@
+@model IEnumerable<DeliveryApp.Models.Lanche>
+
+<div>
+    <h2>@ViewData["Titulo"]</h2>
+</div>
+
+@*<h2>@ViewData["Data"]</h2>
+<hr />
+<h3>@ViewBag.Total @ViewBag.TotalLanches</h3>
+<hr />
+<h2>@TempData["Nome"]</h2>*@
+
+<div class="container">
+    <div class="row">
+        @foreach (var lanche in Model)
+        {
+            <div class="col-sm-4 col-md-4 col-md-4">
+                <p><img src="@lanche.ImagemUrl" class="img-fruit"/></p>
+                <h3>@lanche.Preco.ToString("c")</h3>
+                <h4>@lanche.Nome</h4>
+                <p>@lanche.DescricaoCurta</p>
+            </div>
+        }
+    </div>
+</div>
