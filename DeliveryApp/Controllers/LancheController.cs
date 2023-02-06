@@ -14,7 +14,14 @@ namespace DeliveryApp.Controllers
 
         public IActionResult List()
         {
+            ViewData["Titulo"] = "Todos os Lanches";
+            ViewData["Data"] = DateTime.Now;
+
             var lanches = _lacheRepository.Lanches;
+            var totalLanches = lanches.Count();
+
+            ViewBag.Total = "Total de lanches: ";
+            ViewBag.TotalLanches = totalLanches;
             return View(lanches);
         }
     }
