@@ -23,7 +23,15 @@ public class Startup
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddTransient<ICategoryRepository, CategoriaRepository>();
 
+        // Habilita o uso dos recursos do HttpContext como request, response, autenticação
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         services.AddControllersWithViews();
+
+        // Ativa o uso do cache
+        services.AddMemoryCache();
+        // Habilita o middleware da Session
+        services.AddSession();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +51,9 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        // Ativa o middleware da Session
+        app.UseSession();
 
         app.UseAuthorization();
 
