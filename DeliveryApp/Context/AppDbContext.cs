@@ -13,5 +13,7 @@ namespace DeliveryApp.Context
         // As propriedades definem os nomes das tabelas que serão criadas pelo EntityFramework
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Lanche> Lanches { get; set; }
+
+        public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
     }
 }
