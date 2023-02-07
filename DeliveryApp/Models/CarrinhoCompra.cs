@@ -64,4 +64,30 @@ public class CarrinhoCompra
         // persiste as informações no bd caso haja alterações no carrinho
         _context.SaveChanges();
     }
+
+    public int RemoverDoCarrinho(Lanche lanche)
+    {
+        var carrinhoCompraitem =
+            _context.CarrinhoCompraItens.SingleOrDefault(
+                item => item.Lanche.LancheId == lanche.LancheId &&
+                        item.CarrinhoCompraId == CarrinhoCompraId);
+
+        var quantidadeLocal = 0;
+
+        if(carrinhoCompraitem != null)
+        {
+            if(carrinhoCompraitem.Quantidade > 1)
+            {
+                carrinhoCompraitem.Quantidade -= 1;
+                quantidadeLocal = carrinhoCompraitem.Quantidade;
+            }
+            else
+            {
+                _context.CarrinhoCompraItens.Remove(carrinhoCompraitem);
+            }            
+        }
+
+        _context.SaveChanges();
+        return quantidadeLocal;
+    }
 }
