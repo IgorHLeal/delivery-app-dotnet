@@ -19,7 +19,7 @@ public class CarrinhoCompra
     {
         // define uma sessão
         // ? = Elvis operator
-        ISession session = 
+        ISession session =
             services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
         // obtem um serviço do tipo do nosso contexto
@@ -36,6 +36,32 @@ public class CarrinhoCompra
         return new CarrinhoCompra(context)
         {
             CarrinhoCompraId = carrinhoId
+        };
+    }
+
+    public void AdicionarAoCarrinho(Lanche lanche)
+    {
+        var carrinhoCompraitem =
+            _context.CarrinhoCompraItens.SingleOrDefault(
+                item => item.Lanche.LancheId == lanche.LancheId &&
+                        item.CarrinhoCompraId == CarrinhoCompraId);
+
+        if (carrinhoCompraitem == null)
+        {
+            carrinhoCompraitem = new CarrinhoCompraItem
+            {
+                CarrinhoCompraId = CarrinhoCompraId,
+                Lanche = lanche,
+                Quantidade = 1
+            };
+            _context.CarrinhoCompraItens.Add(carrinhoCompraitem);
         }
+        else
+        {
+            carrinhoCompraitem.Quantidade += 1;
+        }
+
+        // persiste as informações no bd caso haja alterações no carrinho
+        _context.SaveChanges();
     }
 }
