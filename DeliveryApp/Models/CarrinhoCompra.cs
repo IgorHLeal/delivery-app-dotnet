@@ -16,6 +16,7 @@ public class CarrinhoCompra
 
     public List<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
 
+    // Esse método é definido como estático para que possa ser injetado sem criar uma instância da classe em outros arquivos
     public static CarrinhoCompra GetCarrinho(IServiceProvider services)
     {
         // define uma sessão
