@@ -28,7 +28,7 @@ public class CarrinhoCompra
         var context = services.GetService<AppDbContext>();
 
         // obtém ou gera o Id do carrinho
-        // ?? = Operador de coalescência nula
+        // ?? = Operador de coalescência nula que seria algo como: != null
         string carrinhoId = session.GetString("CarrinhoId") ?? Guid.NewGuid().ToString();
 
         // atribui o id do carrinho na sessão
@@ -44,6 +44,7 @@ public class CarrinhoCompra
     public void AdicionarAoCarrinho(Lanche lanche)
     {
         var carrinhoCompraitem =
+            // o método SingleOrDefault retorna o único elemento que for encontado na condição realizada
             _context.CarrinhoCompraItens.SingleOrDefault(
                 item => item.Lanche.LancheId == lanche.LancheId &&
                         item.CarrinhoCompraId == CarrinhoCompraId);

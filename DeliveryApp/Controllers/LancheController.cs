@@ -17,7 +17,7 @@ namespace DeliveryApp.Controllers
         {
             var lancheListViewModel = new LancheListViewModel();
             lancheListViewModel.Lanches = _lacheRepository.Lanches;
-            lancheListViewModel.CategoiriaAtual = "Categoria Atual";
+            lancheListViewModel.CategoriaAtual = "Categoria Atual";
 
             return View(lancheListViewModel);
             //ViewData["Titulo"] = "Todos os Lanches";

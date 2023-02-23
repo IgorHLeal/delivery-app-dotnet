@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DeliveryApp.Models;
 
-[Table("CarrinhoCompraItens")]
+// Esse mapeamento não é necessário pois na classe de contexto já definimos o nome da tabela a ser criada 
+[Table("CarrinhoCompraItens")]  
 public class CarrinhoCompraItem
 {
     public int CarrinhoCompraItemId { get; set; }

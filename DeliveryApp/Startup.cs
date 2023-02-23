@@ -32,7 +32,7 @@ public class Startup
 
         // Ativa o uso do cache
         services.AddMemoryCache();
-        // Habilita o middleware da Session
+        // Configura o serviço do middleware da Session
         services.AddSession();
     }
 
