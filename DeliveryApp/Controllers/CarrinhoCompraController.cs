@@ -1,9 +1,7 @@
-﻿using AspNetCore;
-using DeliveryApp.Models;
+﻿using DeliveryApp.Models;
 using DeliveryApp.Repositories.Interfaces;
 using DeliveryApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Versioning;
 
 namespace DeliveryApp.Controllers;
 public class CarrinhoCompraController : Controller
