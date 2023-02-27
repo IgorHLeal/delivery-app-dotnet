@@ -28,7 +28,6 @@ public class CarrinhoCompraController : Controller
             // Atribuir à propriedade da vieModel a instância do carrinho atual e do valor total
             CarrinhoCompra = _carrinhoCompra,
             CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal()
-
         };
 
         return View(carrinhoCompraVM);
