@@ -15,9 +15,6 @@ namespace DeliveryApp.Components
 
         public IViewComponentResult Invoke()
         {
-
-            var itens = _carrinhoCompra.GetCarrinhoCompraItems();
-
             // Criando uma lista de itens fake
             //var itens = new List<CarrinhoCompraItem>()
             //{
@@ -25,6 +22,7 @@ namespace DeliveryApp.Components
             //    new CarrinhoCompraItem(),
             //};
 
+            var itens = _carrinhoCompra.GetCarrinhoCompraItems();
             _carrinhoCompra.CarrinhoCompraItens = itens;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
