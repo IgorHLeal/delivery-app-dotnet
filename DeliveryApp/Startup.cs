@@ -3,6 +3,7 @@ using DeliveryApp.Models;
 using DeliveryApp.Repositories;
 using DeliveryApp.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace DeliveryApp;
 public class Startup
@@ -62,8 +63,17 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(
+                name: "categoriaFiltro",
+                pattern: "Lanche/{action}/{categoria?}",
+                defaults: new { Controller = "Lanche", Action = "List" }
+            );
+
+            // Mapeamento convencional
+            endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            // Equivalente ao mapeamento convenvional
+            // endpoints.MapAreaControllerRoute();
         });
     }
 }
