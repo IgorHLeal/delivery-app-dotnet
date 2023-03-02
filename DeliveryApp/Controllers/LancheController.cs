@@ -26,19 +26,24 @@ namespace DeliveryApp.Controllers
             }
             else
             {
-                if(string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
-                {
-                    lanches = _lacheRepository.Lanches
-                        .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Normal"))
-                        .OrderBy(lanche => lanche.Nome);
-                }
-                else
-                {
-                    lanches = _lacheRepository.Lanches
-                        .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Natural"))
-                        .OrderBy(lanche => lanche.Nome);
-                }
-                
+                //if(string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
+                //{
+                //    lanches = _lacheRepository.Lanches
+                //        .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Normal"))
+                //        .OrderBy(lanche => lanche.Nome);
+                //}
+                //else
+                //{
+                //    lanches = _lacheRepository.Lanches
+                //        .Where(lanche => lanche.Categoria.CategoriaNome.Equals("Natural"))
+                //        .OrderBy(lanche => lanche.Nome);
+                //}
+
+                // Automatizando a exibição dos nomes das categorias
+                lanches = _lacheRepository.Lanches
+                          .Where(lanche => lanche.Categoria.CategoriaNome.Equals(categoria))
+                          .OrderBy(categoria => categoria.Nome);
+
                 categoriaAtual = categoria;
             }
 
