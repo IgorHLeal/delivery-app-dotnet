@@ -24,6 +24,7 @@ public class Startup
         // Configuração dos repositórios criados;Injeção de dependência
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddTransient<ICategoryRepository, CategoriaRepository>();
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
         // Habilita o uso dos recursos do HttpContext como request, response, autenticação
