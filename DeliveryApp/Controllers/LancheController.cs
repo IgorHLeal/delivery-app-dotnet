@@ -7,11 +7,11 @@ namespace DeliveryApp.Controllers
 {
     public class LancheController : Controller
     {
-        private readonly ILancheRepository _lacheRepository;
+        private readonly ILancheRepository _lancheRepository;
 
-        public LancheController(ILancheRepository lacheRepository)
+        public LancheController(ILancheRepository lancheRepository)
         {
-            _lacheRepository = lacheRepository;
+            _lancheRepository = lancheRepository;
         }
 
         public IActionResult List(string categoria)
@@ -21,7 +21,7 @@ namespace DeliveryApp.Controllers
 
             if(string.IsNullOrEmpty(categoria))
             {
-                lanches = _lacheRepository.Lanches.OrderBy(lanche => lanche.LancheId);
+                lanches = _lancheRepository.Lanches.OrderBy(lanche => lanche.LancheId);
                 categoriaAtual = "Todos os lanches";
             }
             else
@@ -40,7 +40,7 @@ namespace DeliveryApp.Controllers
                 //}
 
                 // Automatizando a exibição dos nomes das categorias
-                lanches = _lacheRepository.Lanches
+                lanches = _lancheRepository.Lanches
                           .Where(lanche => lanche.Categoria.CategoriaNome.Equals(categoria))
                           .OrderBy(categoria => categoria.Nome);
 
@@ -71,6 +71,12 @@ namespace DeliveryApp.Controllers
             ////ViewBag.Total = "Total de lanches: ";
             ////ViewBag.TotalLanches = totalLanches;
             //return View(lanches);
+        }
+
+        public IActionResult Details(int lancheId)
+        {
+            var lanche = _lancheRepository.Lanches.FirstOrDefault(lanche => lanche.LancheId == lancheId);
+            return View(lanche);
         }
     }
 }
